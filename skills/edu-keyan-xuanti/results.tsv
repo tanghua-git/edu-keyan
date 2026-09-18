@@ -1,0 +1,5 @@
+timestamp	commit	skill	old_score	new_score	status	dimension	note	eval_mode
+2026-09-18T23:10	baseline	edu-keyan-xuanti	-	81.0	baseline	-	达尔文9维基线(主agent结构分+subagent实测);dim3失败模式缺失/dim4无检查点	full_test
+2026-09-18T23:44	fdf2316	edu-keyan-xuanti	81.0	87.6	keep	dim3+dim4	新增失败模式F1-F7+检查点CP1-3;judge 3/3 better(clear)	full_test
+2026-09-18T23:47	f8c9dfd	edu-keyan-xuanti	87.6	88.2	keep	dim9	反例黑名单独立成章(11条);judge 3/3 better(all slight)	full_test
+2026-09-18T23:50	432cff4	edu-keyan-xuanti	88.2	88.2	keep	dim8	输出规范(6条);judge 3/3 better(all slight);HL-4触发(连续2轮slight)收敛	full_test
