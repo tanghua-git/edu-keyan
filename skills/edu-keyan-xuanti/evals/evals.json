@@ -1,0 +1,67 @@
+{
+  "skill_name": "edu-keyan-xuanti",
+  "version": "1.0",
+  "description": "教育科研选题与课题命名技能触发与行为评测",
+  "evals": [
+    {
+      "id": "trigger-01",
+      "type": "should_trigger",
+      "query": "我是一名小学语文老师，学校让我们申报课题，可我完全不知道研究什么，怎么办？",
+      "expected": "触发本技能。进入执行步骤：先诊断用户处于「无题」阶段，再用选题四来源（X03）帮其从自身教学实践中挖掘候选问题，随后走价值判断（X01）与问题→课题四步转化（X02）。"
+    },
+    {
+      "id": "trigger-02",
+      "type": "should_trigger",
+      "query": "班里学生计算老出错，我想就这个报个课题，题目就叫《如何提高学生的计算能力》行吗？",
+      "expected": "触发本技能。指出这是把问题直接当课题（缺假设、研究点不明），用问题→课题四步转化帮其做专业内涵剖析与可行性聚焦，最后用句式库产出含抓手的名称。"
+    },
+    {
+      "id": "trigger-03",
+      "type": "should_trigger",
+      "query": "帮我想几个课题名称，方向是初中英语阅读，评审说我上次起的名字太大太空不聚焦。",
+      "expected": "触发本技能。先用小题大做原则收敛切口，再按课题名称句式库（常规三结构优先，创新结构可选）产出 1—2 个名称，并过三要求与三毛病自检。"
+    },
+    {
+      "id": "trigger-04",
+      "type": "should_trigger",
+      "query": "I want to do action research but have no idea how to choose a research topic from my daily teaching. Any framework for topic selection?",
+      "expected": "触发本技能（英文触发词 topic selection / research topic）。以四来源与应然—实然两维度框架引导其从日常教学中提炼可研究的问题。"
+    },
+    {
+      "id": "notrigger-01",
+      "type": "should_not_trigger",
+      "query": "课题题目我已经定好了，帮我把这个课题的研究方案写一下，包括研究目标、研究内容和研究思路。",
+      "expected": "不触发本技能，应转 edu-keyan-fangan（方案设计）。已定题写方案属于 fangan 的研究什么/怎样研究/预期效果三问范畴。"
+    },
+    {
+      "id": "notrigger-02",
+      "type": "should_not_trigger",
+      "query": "申报书里「课题的提出」这一栏，也就是选题缘由和研究背景，帮我写一段。",
+      "expected": "不触发本技能，应转 edu-keyan-fangan。「课题的提出/选题缘由」写作归 fangan；本技能只管课题名称怎么写，不管为什么研究的论证段落。"
+    },
+    {
+      "id": "notrigger-03",
+      "type": "should_not_trigger",
+      "query": "我的课题已经立项了，下个月要开题论证，帮我看看开题报告和中期检查怎么准备。",
+      "expected": "不触发本技能，应转 edu-keyan-shishi（过程实施）。开题论证与中期属于课题实施阶段。"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "query": "我之前做过一个关于思维导图的课题结题了，现在想再申报一个，但不想重复自己，有什么思路？",
+      "expected": "触发本技能并调用 X04 已有成果深化两路径：给出形而上（提炼理论模型）与形而下（拓展学段/学科实践路径）两个再选题方向，并用深度改造案例（错题辐射复习法）示范如何避免重复立项。"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "query": "我想申报个微型课题（个人课题），就研究我们班课前三分钟演讲，题目你帮我把把关。",
+      "expected": "触发本技能。按微型课题路径处理：小题大做聚焦 + f08 三要求（亮特色/显个性/蹭热点）核查 + 命名三毛病自检；提醒蹭热点必须是当下真热点。"
+    },
+    {
+      "id": "eratrap-01",
+      "type": "era_trap",
+      "query": "现在做课题有什么热点方向？给我推荐几个好立项的热门选题。",
+      "expected": "不得照搬书中 2018—2019 热点案例（微课、电子书包、STEM、区块链+）。应先读 references/00-当代适配.md，引导扫描当下政策锚点（人工智能+教育行动计划、教育强国建设规划纲要、2022 版新课标核心素养），再用应然—实然矛盾分析把热点落到用户本校实际，并预警热点题「创新易做实难」陷阱。"
+    }
+  ]
+}

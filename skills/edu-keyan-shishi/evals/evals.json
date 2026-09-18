@@ -1,0 +1,79 @@
+{
+  "skill": "edu-keyan-shishi",
+  "description": "课题研究过程实施指导（开题论证/组织研究活动/带动课题组/积累过程资料/中期与阶段性成果提炼）",
+  "format": "darwin",
+  "should_trigger": [
+    {
+      "id": "st-01",
+      "query": "我这个课题已经立项了，马上要开题，开题论证报告怎么写、要请几个专家？",
+      "intent": "已立项、准备开题论证（专家人数、开题报告结构）",
+      "expected_skill": "edu-keyan-shishi"
+    },
+    {
+      "id": "st-02",
+      "query": "我们课题组五个人，就我一个人在干活，其他人都挂名怎么办？",
+      "intent": "成员深度参与不足、挂名问题，需四机制",
+      "expected_skill": "edu-keyan-shishi"
+    },
+    {
+      "id": "st-03",
+      "query": "课题研究过程中要积累哪些资料，用什么方式归档比较好？",
+      "intent": "过程性资料四类与积累三方式",
+      "expected_skill": "edu-keyan-shishi"
+    },
+    {
+      "id": "st-04",
+      "query": "中期快到了，阶段性成果怎么提炼和发布，写论文还是案例？",
+      "intent": "中期/阶段性成果提炼与发布样式",
+      "expected_skill": "edu-keyan-shishi"
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "id": "snt-01",
+      "query": "课题申报书里的研究目标、研究内容这几块怎么写？",
+      "intent": "写研究方案/申报书文本",
+      "expected_skill": "edu-keyan-fangan",
+      "reason": "方案与申报书写作属 edu-keyan-fangan，本技能只管立项后的过程实施"
+    },
+    {
+      "id": "snt-02",
+      "query": "我想用问卷做调查研究，问卷怎么设计、样本怎么取？",
+      "intent": "研究方法层面的调查设计",
+      "expected_skill": "edu-keyan-fangfa",
+      "reason": "选择并设计研究方法属 edu-keyan-fangfa，本技能不覆盖方法设计"
+    },
+    {
+      "id": "snt-03",
+      "query": "结题报告怎么写，成果报告的结构是什么？",
+      "intent": "结题/成果报告写作",
+      "expected_skill": "edu-keyan-chengguo",
+      "reason": "结题报告与成果报告写作属 edu-keyan-chengguo，本技能只管过程与阶段提炼"
+    }
+  ],
+  "edge_case": [
+    {
+      "id": "ec-01",
+      "query": "我们课题组的研讨活动每次都靠手写记录，有没有更省事的办法？",
+      "intent": "过程记录效率提升，介于资料积累与工具之间",
+      "expected_skill": "edu-keyan-shishi",
+      "expected_behavior": "引导到 references/00-当代适配.md 与 04-过程性资料体系.md：用网盘/知识库/多维表格+录音转写(ASR)数字化留痕，并保留归类-编码-总结三动作，而非只建议买档案袋"
+    },
+    {
+      "id": "ec-02",
+      "query": "我带教研组做课题，平时就是上公开课，这算研究活动吗？",
+      "intent": "判断日常教学与研究的边界",
+      "expected_skill": "edu-keyan-shishi",
+      "expected_behavior": "用 references/01 的研究味儿四标志（假设/分析/提炼/资料物化）逐条判定，指出缺哪些标志并给出补设假设与反思分析的建议"
+    }
+  ],
+  "era_trap": [
+    {
+      "id": "et-01",
+      "query": "课题组的资料怎么用 AI 工具管理，直接建个共享文件夹就行吗？",
+      "intent": "用当代 AI/数字化手段管理过程资料",
+      "expected_skill": "edu-keyan-shishi",
+      "expected_behavior": "必须走 references/00-当代适配.md 的数字化升级方案：网盘/知识库/多维表格替代实物档案袋，保留归类-编码-总结三动作，并提醒'电子档案库四优势写于2019年、今天应更进一步'，不能照搬实物档案袋或只建文件夹"
+    }
+  ]
+}

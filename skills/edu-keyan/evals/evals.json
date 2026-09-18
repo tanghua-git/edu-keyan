@@ -1,0 +1,62 @@
+{
+  "skill": "edu-keyan",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们学校鼓励老师做课题，我完全没做过，这个东西到底怎么入手？",
+      "expected_behavior": "调用 edu-keyan，用五阶段生命周期建立整体认知，并追问定位其所处阶段",
+      "notes": "正面场景：新手笼统提问"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "从选题到结题，一个课题完整要走哪些环节？给我捋一遍",
+      "expected_behavior": "调用 edu-keyan，按五阶段生命周期给全流程总览，并说明各阶段产物",
+      "notes": "正面场景：横跨多阶段"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "课题研究和我们平时的备课上课到底有什么不一样？",
+      "expected_behavior": "调用 edu-keyan，用'研究味儿'四标志回答",
+      "notes": "正面场景：概念辨析，总纲性问题"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我把'小学数学问题导向学习'这个方向起几个规范的课题名称",
+      "expected_behavior": "阶段明确（选题命名），应转 edu-keyan-xuanti，本技能只分流不操作",
+      "notes": "兄弟诱饵：明确选题阶段"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我的课题下个月结题，研究报告的成效部分怎么写才有说服力？",
+      "expected_behavior": "阶段明确（成果总结），应转 edu-keyan-chengguo",
+      "notes": "兄弟诱饵：明确成果阶段"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "帮我查一下知网上'项目式学习'最近三年的文献",
+      "expected_behavior": "纯文献检索任务，不是课题全流程导航，不应调用本技能",
+      "notes": "无关诱饵：信息检索"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "什么是准实验？",
+      "expected_behavior": "术语查询，查 references/01-全书术语表.md 直接回答，不必分流到阶段技能",
+      "notes": "边界：术语问题在路由层直接解决"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "我题目刚定，方案还没写，但领导又催我先交个中期安排的初步想法",
+      "expected_behavior": "横跨方案与实施两个阶段，调用 edu-keyan 列出阶段序列，先转 fangan 写方案，再提示 shishi 的实施规划",
+      "notes": "边界：多阶段混合，路由负责排序"
+    }
+  ]
+}
